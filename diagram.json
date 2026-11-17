@@ -1,0 +1,65 @@
+{
+  "version": 1,
+  "author": "Sofia Figueroa",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-breadboard", "id": "bb1", "top": 294.6, "left": -285.2, "attrs": {} },
+    { "type": "board-esp32-s3-devkitc-1", "id": "esp", "top": -28.98, "left": 4.57, "attrs": {} },
+    {
+      "type": "wokwi-buzzer",
+      "id": "bz1",
+      "top": 98.4,
+      "left": 165,
+      "attrs": { "volume": "0.1" }
+    },
+    { "type": "wokwi-gas-sensor", "id": "gas1", "top": 108.3, "left": -175.4, "attrs": {} },
+    {
+      "type": "wokwi-led",
+      "id": "led1",
+      "top": 322.8,
+      "left": -5.8,
+      "attrs": { "color": "green" }
+    },
+    { "type": "wokwi-led", "id": "led2", "top": 322.8, "left": 80.6, "attrs": { "color": "red" } },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": 378.35,
+      "left": -48,
+      "attrs": { "value": "220" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r2",
+      "top": 378.35,
+      "left": 38.4,
+      "attrs": { "value": "220" }
+    },
+    { "type": "wokwi-vcc", "id": "vcc1", "top": -8.84, "left": -57.6, "attrs": {} }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "esp:GND.1", "gas1:GND", "black", [ "h-19.25", "v-28" ] ],
+    [ "esp:GND.4", "bb1:tn.50", "black", [ "h0" ] ],
+    [ "esp:5V", "bb1:tp.1", "red", [ "h0" ] ],
+    [ "gas1:AOUT", "esp:15", "blue", [ "v-57.6", "h48.05" ] ],
+    [ "gas1:DOUT", "esp:16", "purple", [ "h19.2", "v-57.9" ] ],
+    [ "bz1:1", "esp:GND.3", "green", [ "v0" ] ],
+    [ "bz1:2", "esp:8", "green", [ "v0" ] ],
+    [ "r2:1", "bb1:tn.26", "green", [ "v0" ] ],
+    [ "r1:1", "bb1:tn.18", "green", [ "v0" ] ],
+    [ "bb1:39t.d", "esp:12", "red", [ "v0" ] ],
+    [ "bb1:30t.d", "esp:11", "green", [ "v0" ] ],
+    [ "led1:A", "bb1:30t.c", "", [ "$bb" ] ],
+    [ "led1:C", "bb1:29t.c", "", [ "$bb" ] ],
+    [ "led2:A", "bb1:39t.c", "", [ "$bb" ] ],
+    [ "led2:C", "bb1:38t.c", "", [ "$bb" ] ],
+    [ "r1:1", "bb1:23t.e", "", [ "$bb" ] ],
+    [ "r1:2", "bb1:29t.e", "", [ "$bb" ] ],
+    [ "r2:1", "bb1:32t.e", "", [ "$bb" ] ],
+    [ "r2:2", "bb1:38t.e", "", [ "$bb" ] ],
+    [ "gas1:VCC", "vcc1:VCC", "red", [ "h0" ] ]
+  ],
+  "dependencies": {}
+}
